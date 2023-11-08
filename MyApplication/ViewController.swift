@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     lazy var nameBtn: UIButton = {
         let btn = UIButton(primaryAction: nameBtnAction)
-        btn.frame = CGRect(x: 20, y: 300, width: 150, height: 40)
+        btn.frame = CGRect(x: 20, y: 200, width: 150, height: 40)
         btn.setTitle("Покажи имя", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = .black
@@ -27,12 +27,14 @@ class ViewController: UIViewController {
     }()
     
     lazy var nameBtnAction = UIAction { _ in
-            self.nameLabel.text = "Мое имя : Казбек"
+        if let name = self.nameTextField.text {
+            self.nameLabel.text = "Мое имя : \(name)"
+        }
     }
     
     lazy var lastNameBtn : UIButton = {
         let btn = UIButton(primaryAction: lastNameBtnAction)
-        btn.frame = CGRect(x: 180, y: 300, width: 180, height: 40)
+        btn.frame = CGRect(x: 180, y: 200, width: 180, height: 40)
         btn.setTitle("Покажи фамилию", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = .black
@@ -48,12 +50,14 @@ class ViewController: UIViewController {
     }()
     
     lazy var lastNameBtnAction = UIAction { _ in
-        self.lastNameLabel.text = "Моя фамилия : Мусаев"
+        if let lastName = self.lastNameTextField.text {
+            self.lastNameLabel.text = "Моя фамилия : \(lastName)"
+        }
     }
     
     lazy var groupBtn: UIButton = {
         let btn = UIButton(primaryAction: groupBtnAction)
-        btn.frame = CGRect(x: 20, y: 350, width: 340, height: 40)
+        btn.frame = CGRect(x: 20, y: 250, width: 340, height: 40)
         btn.setTitle("Показать группу", for: .normal)
         btn.backgroundColor = .black
         btn.setTitleColor(.white, for: .normal)
@@ -69,13 +73,15 @@ class ViewController: UIViewController {
     }()
     
     lazy var groupBtnAction = UIAction { _ in
-        self.groupLabel.text = "Группа №5"
+        if let groupNumber = self.groupTextField.text {
+            self.groupLabel.text = "Группа №\(groupNumber)"
+        }
     }
     
     lazy var invisibility : UIButton = {
        let btn = UIButton(primaryAction: invisibilityAction)
         btn.setTitle("Скрыть", for: .normal)
-        btn.frame = CGRect(x: 20, y: 400, width: 340, height: 40)
+        btn.frame = CGRect(x: 20, y: 300, width: 340, height: 40)
         btn.backgroundColor = .lightGray
         btn.setTitleColor(.white, for: .normal)
         return btn
@@ -86,6 +92,30 @@ class ViewController: UIViewController {
         self.lastNameLabel.text = "Моя фамилия"
         self.groupLabel.text = "Группа"
     }
+    
+    lazy var nameTextField : UITextField = {
+        let textField = UITextField()
+        textField.frame = CGRect(x: 20, y: 350, width: 340, height: 40)
+        textField.backgroundColor = .systemGray
+        textField.placeholder = "Введите имя"
+        return textField
+    }()
+    
+    lazy var lastNameTextField: UITextField = {
+      let textField = UITextField()
+        textField.frame = CGRect(x: 20, y: 395, width: 340, height: 40)
+        textField.backgroundColor = .systemGray
+        textField.placeholder = "Введите фамилию"
+        return textField
+    }()
+    
+    lazy var groupTextField: UITextField = {
+        let textField = UITextField()
+          textField.frame = CGRect(x: 20, y: 440, width: 340, height: 40)
+          textField.backgroundColor = .systemGray
+          textField.placeholder = "Введите номер группы"
+          return textField
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,5 +132,8 @@ class ViewController: UIViewController {
         
         view.addSubview(invisibility)
         
+        view.addSubview(nameTextField)
+        view.addSubview(lastNameTextField)
+        view.addSubview(groupTextField)
     }
 }
