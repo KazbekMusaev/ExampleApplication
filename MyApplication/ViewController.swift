@@ -15,6 +15,7 @@ final class ViewController: UIViewController {
         btn.setTitle("Покажи имя", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = .black
+        btn.layer.cornerRadius = 10
         return btn
     }()
     
@@ -38,6 +39,7 @@ final class ViewController: UIViewController {
         btn.setTitle("Покажи фамилию", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = .black
+        btn.layer.cornerRadius = 10
         return btn
     }()
     
@@ -60,6 +62,7 @@ final class ViewController: UIViewController {
         btn.frame = CGRect(x: 20, y: 250, width: 340, height: 40)
         btn.setTitle("Показать группу", for: .normal)
         btn.backgroundColor = .black
+        btn.layer.cornerRadius = 10
         btn.setTitleColor(.white, for: .normal)
         return btn
     }()
@@ -83,6 +86,7 @@ final class ViewController: UIViewController {
         btn.setTitle("Скрыть", for: .normal)
         btn.frame = CGRect(x: 20, y: 300, width: 340, height: 40)
         btn.backgroundColor = .lightGray
+        btn.layer.cornerRadius = 10
         btn.setTitleColor(.white, for: .normal)
         return btn
     }()
@@ -96,7 +100,9 @@ final class ViewController: UIViewController {
     lazy var nameTextField : UITextField = {
         let textField = UITextField()
         textField.frame = CGRect(x: 20, y: 350, width: 340, height: 40)
-        textField.backgroundColor = .systemGray
+        textField.backgroundColor = .clear
+        textField.layer.borderWidth = 2
+        textField.layer.cornerRadius = 10
         textField.placeholder = "Введите имя"
         return textField
     }()
@@ -104,7 +110,9 @@ final class ViewController: UIViewController {
     lazy var lastNameTextField: UITextField = {
       let textField = UITextField()
         textField.frame = CGRect(x: 20, y: 395, width: 340, height: 40)
-        textField.backgroundColor = .systemGray
+        textField.backgroundColor = .clear
+        textField.layer.borderWidth = 2
+        textField.layer.cornerRadius = 10
         textField.placeholder = "Введите фамилию"
         return textField
     }()
@@ -112,14 +120,29 @@ final class ViewController: UIViewController {
     lazy var groupTextField: UITextField = {
         let textField = UITextField()
           textField.frame = CGRect(x: 20, y: 440, width: 340, height: 40)
-          textField.backgroundColor = .systemGray
+          textField.backgroundColor = .clear
+          textField.layer.borderWidth = 2
+          textField.layer.cornerRadius = 10
           textField.placeholder = "Введите номер группы"
           return textField
     }()
     
+    lazy var exitKeyboard: UIButton = {
+        let btn = UIButton(primaryAction: exitKeyboardAction)
+        btn.frame = CGRect(x: 20, y: 485, width: 340, height: 40)
+        btn.backgroundColor = .lightGray
+        btn.setTitle("Скрыть клавиатуру", for: .normal)
+        btn.layer.cornerRadius = 10
+        return btn
+    }()
+    
+    lazy var exitKeyboardAction = UIAction { _ in
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemPink
         
         view.addSubview(nameBtn)
         view.addSubview(nameLabel)
@@ -135,5 +158,7 @@ final class ViewController: UIViewController {
         view.addSubview(nameTextField)
         view.addSubview(lastNameTextField)
         view.addSubview(groupTextField)
+        
+        view.addSubview(exitKeyboard)
     }
 }
