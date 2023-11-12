@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         default : ()
         }
         self.result.text = String(result)
+        self.resultTitle.isHidden = false
         self.resultOperation.isHidden = false
     }
     
@@ -58,24 +59,28 @@ class ViewController: UIViewController {
         label.font = .systemFont(ofSize: 16)
         label.center.x = view.center.x
         label.textColor = .black
+        label.isHidden = true
         return label
     }()
     
     lazy var lhsLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 20, y: 243, width: 50, height: 56)
+        label.textColor = .black
         return label
     }()
     
     lazy var rhsLabel: UILabel = {
        let label = UILabel()
         label.frame = CGRect(x: 170, y: 243, width: 50, height: 56)
+        label.textColor = .black
         return label
     }()
     
     lazy var operation: UILabel = {
        let label = UILabel()
         label.frame = CGRect(x: 95, y: 243, width: 50, height: 56)
+        label.textColor = .black
         return label
     }()
     
@@ -83,6 +88,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.frame = CGRect(x: 250, y: 243, width: 50, height: 56)
         label.text = "="
+        label.textColor = .black
         label.isHidden = true
         return label
     }()
@@ -90,6 +96,7 @@ class ViewController: UIViewController {
     lazy var result: UILabel = {
        let label = UILabel()
         label.frame = CGRect(x: 320, y: 243, width: 50, height: 56)
+        label.textColor = .black
         return label
     }()
     
@@ -119,6 +126,8 @@ class ViewController: UIViewController {
         let vc = CalculateViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         vc.delegate = self
+        vc.firstValueTextField.text = self.lhsLabel.text
+        vc.secondValueTextField.text = self.rhsLabel.text
     }
     
 

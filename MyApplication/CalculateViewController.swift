@@ -86,7 +86,14 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
         self.delegate?.setLhsValue(text: self.firstValueTextField.text)
         self.delegate?.setRhsValue(text: self.secondValueTextField.text)
         self.delegate?.setOperation(operation: "/")
-        self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "/", rhs: self.secondValueTextField.text)
+        if self.secondValueTextField.text == "0" {
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 300, width: 200, height: 100)
+            label.center.x = self.view.center.x
+            label.text = "На 0 делить нельзя!"
+            self.view.addSubview(label)
+        } else { self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "/", rhs: self.secondValueTextField.text)
+        }
     }
     
     lazy var multipliBtn: UIButton = {
