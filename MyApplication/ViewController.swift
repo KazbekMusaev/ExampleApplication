@@ -37,15 +37,19 @@ class ViewController: UIViewController {
         switch operation {
         case "+":
             result = lhsInt + rhsInt
+            self.result.text = String(result)
         case "-":
             result = lhsInt - rhsInt
+            self.result.text = String(result)
         case "/":
-            result = lhsInt / rhsInt
+            let lhsFloat = Float(lhsInt)
+            let rhsFloat = Float(rhsInt)
+            self.result.text = String(lhsFloat / rhsFloat)
         case "*":
             result = lhsInt * rhsInt
+            self.result.text = String(result)
         default : ()
         }
-        self.result.text = String(result)
         self.resultTitle.isHidden = false
         self.resultOperation.isHidden = false
     }

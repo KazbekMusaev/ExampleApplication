@@ -27,8 +27,10 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
         textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         textField.placeholder = "число 1"
         textField.textColor = .black
+        textField.keyboardType = .numberPad
         textField.tag = 1
         textField.delegate = self
+
         return textField
     }()
     
@@ -38,6 +40,7 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
         textField.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         textField.placeholder = "число 2"
         textField.textColor = .black
+        textField.keyboardType = .numberPad
         return textField
     }()
     
@@ -51,10 +54,11 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
     }()
     
     lazy var plusBtnAction = UIAction { _ in
-        self.delegate?.setLhsValue(text: self.firstValueTextField.text)
-        self.delegate?.setRhsValue(text: self.secondValueTextField.text)
-        self.delegate?.setOperation(operation: "+")
-        self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "+", rhs: self.secondValueTextField.text)
+            self.delegate?.setLhsValue(text: self.firstValueTextField.text)
+            self.delegate?.setRhsValue(text: self.secondValueTextField.text)
+            self.delegate?.setOperation(operation: "+")
+            self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "+", rhs: self.secondValueTextField.text)
+            self.navigationController?.popViewController(animated: true)
     }
     
     lazy var minusBtn: UIButton = {
@@ -71,6 +75,7 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
         self.delegate?.setRhsValue(text: self.secondValueTextField.text)
         self.delegate?.setOperation(operation: "-")
         self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "-", rhs: self.secondValueTextField.text)
+        self.navigationController?.popViewController(animated: true)
     }
     
     lazy var divisionBtn: UIButton = {
@@ -93,6 +98,7 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
             label.text = "На 0 делить нельзя!"
             self.view.addSubview(label)
         } else { self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "/", rhs: self.secondValueTextField.text)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -110,6 +116,7 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
         self.delegate?.setRhsValue(text: self.secondValueTextField.text)
         self.delegate?.setOperation(operation: "*")
         self.delegate?.setResult(lhs: self.firstValueTextField.text, operation: "*", rhs: self.secondValueTextField.text)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -127,3 +134,9 @@ final class CalculateViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+extension CalculateViewController {
+    func checkIsEmpty(_ text: String?) -> Bool {
+        guard text != nil else { return false }
+        return true
+    }
+}
