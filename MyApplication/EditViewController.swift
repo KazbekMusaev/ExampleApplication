@@ -133,6 +133,8 @@ final class EditViewController: UIViewController {
 extension EditViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 3 {
+            self.delegate?.setName(name: self.editName.text)
+            self.delegate?.setLastName(lastName: self.editLastName.text)
             self.delegate?.setAboutMeText(aboutMe: self.textFieldAboutMe.text)
             self.navigationController?.popViewController(animated: true)
         } else if textField.tag == 1 {
