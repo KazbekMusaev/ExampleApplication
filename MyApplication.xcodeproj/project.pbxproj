@@ -13,6 +13,7 @@
 		18B60B452AFB63FD00F6AE1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B60B442AFB63FD00F6AE1D /* ViewController.swift */; };
 		18B60B4A2AFB63FE00F6AE1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B60B492AFB63FE00F6AE1D /* Assets.xcassets */; };
 		18B60B4D2AFB63FE00F6AE1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B60B4B2AFB63FE00F6AE1D /* LaunchScreen.storyboard */; };
+		18CF3B1B2B060BDB003A439E /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF3B1A2B060BDB003A439E /* ViewManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		18B60B492AFB63FE00F6AE1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B60B4C2AFB63FE00F6AE1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B60B4E2AFB63FE00F6AE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18CF3B1A2B060BDB003A439E /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		18B60B3F2AFB63FD00F6AE1D /* MyApplication */ = {
 			isa = PBXGroup;
 			children = (
+				18CF3B192B060BCA003A439E /* ViewManager */,
 				18B60B402AFB63FD00F6AE1D /* AppDelegate.swift */,
 				18B60B422AFB63FD00F6AE1D /* SceneDelegate.swift */,
 				18B60B442AFB63FD00F6AE1D /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				187837ED2B05396D008A8E3E /* EditViewController.swift */,
 			);
 			path = MyApplication;
+			sourceTree = "<group>";
+		};
+		18CF3B192B060BCA003A439E /* ViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				18CF3B1A2B060BDB003A439E /* ViewManager.swift */,
+			);
+			path = ViewManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				187837EE2B05396D008A8E3E /* EditViewController.swift in Sources */,
 				18B60B452AFB63FD00F6AE1D /* ViewController.swift in Sources */,
+				18CF3B1B2B060BDB003A439E /* ViewManager.swift in Sources */,
 				18B60B412AFB63FD00F6AE1D /* AppDelegate.swift in Sources */,
 				18B60B432AFB63FD00F6AE1D /* SceneDelegate.swift in Sources */,
 			);

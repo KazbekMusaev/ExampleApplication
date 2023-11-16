@@ -8,6 +8,8 @@
 import UIKit
 
 final class EditViewController: UIViewController {
+    
+    let viewManager = ViewManager()
 
     var delegate : ViewControllerDelegate?
     
@@ -23,103 +25,40 @@ final class EditViewController: UIViewController {
         view.addSubview(btnExit)
         
         
-        titleFIO.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
-        titleFIO.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         
-        editName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        editName.topAnchor.constraint(equalTo: titleFIO.bottomAnchor, constant: 20).isActive = true
+        NSLayoutConstraint.activate([
+            titleFIO.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            titleFIO.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            
+            editName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            editName.topAnchor.constraint(equalTo: titleFIO.bottomAnchor, constant: 20),
+            
+            editLastName.topAnchor.constraint(equalTo: titleFIO.bottomAnchor, constant: 20),
+            editLastName.leadingAnchor.constraint(equalTo: editName.trailingAnchor, constant: 5),
+            editLastName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            
+            aboutMe.topAnchor.constraint(equalTo: editName.bottomAnchor, constant: 20),
+            aboutMe.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            
+            textFieldAboutMe.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            textFieldAboutMe.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            textFieldAboutMe.topAnchor.constraint(equalTo: aboutMe.bottomAnchor, constant: 20),
+            
+            btnExit.bottomAnchor.constraint(equalTo : view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            btnExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            btnExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+        ])
         
-        editLastName.topAnchor.constraint(equalTo: titleFIO.bottomAnchor, constant: 20).isActive = true
-        editLastName.leadingAnchor.constraint(equalTo: editName.trailingAnchor, constant: 5).isActive = true
-        editLastName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         
-        aboutMe.topAnchor.constraint(equalTo: editName.bottomAnchor, constant: 20).isActive = true
-        aboutMe.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        
-        textFieldAboutMe.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        textFieldAboutMe.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        textFieldAboutMe.topAnchor.constraint(equalTo: aboutMe.bottomAnchor, constant: 20).isActive = true
-        
-        btnExit.bottomAnchor.constraint(equalTo : view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
-        btnExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        btnExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
     }
     
     
-    lazy var editName: UITextField = {
-       let textField = UITextField()
-        let oneSize = view.frame.width / 2 - 30
-        textField.placeholder = "Введите свое имя"
-        textField.delegate = self
-        textField.backgroundColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
-        textField.textColor = .black
-        textField.tag = 1
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.widthAnchor.constraint(equalToConstant: oneSize).isActive = true
-        textField.layer.cornerRadius = 10
-        return textField
-    }()
-    
-    lazy var editLastName: UITextField = {
-       let textField = UITextField()
-        let oneSize = view.frame.width / 2 - 30
-        textField.delegate = self
-        textField.placeholder = "Введите свою фамилию"
-        textField.backgroundColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
-        textField.textColor = .black
-        textField.tag = 2
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.widthAnchor.constraint(equalToConstant: oneSize).isActive = true
-        textField.layer.cornerRadius = 10
-        return textField
-    }()
-
-    lazy var titleFIO : UILabel = {
-       let label = UILabel()
-        label.text = "Инициалы"
-        label.font = .boldSystemFont(ofSize: 20)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        return label
-    }()
-    
-    lazy var aboutMe: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Напишите о себе"
-        label.font = .boldSystemFont(ofSize: 20)
-        label.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        return label
-    }()
-    
-    
-    lazy var textFieldAboutMe: UITextField = {
-       let textField = UITextField()
-        textField.delegate = self
-        textField.tag = 3
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
-        textField.placeholder = "Напишите о себе"
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.clipsToBounds = true
-        textField.layer.cornerRadius = 10
-        return textField
-    }()
-    
-    lazy var btnExit: UIButton = {
-        let btn = UIButton(primaryAction: exitBtnAction)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Заполнить", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = UIColor(red: 19/255, green: 81/255, blue: 202/255, alpha: 1)
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 20
-        btn.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        return btn
-    }()
+    lazy var editName = viewManager.getTextField(delegate: self, placeholder: "Введите имя", tag: 1, view: self.view)
+    lazy var editLastName = viewManager.getTextField(delegate: self, placeholder: "Введите фамилию", tag: 2, view: self.view)
+    lazy var titleFIO = viewManager.getLabel(text: "Инициалы", size: 20, height: 22, backgroundColor: nil)
+    lazy var aboutMe = viewManager.getLabel(text: "Напишите о себе", size: 20, height: 22, backgroundColor: nil)
+    lazy var textFieldAboutMe = viewManager.getTextField(delegate: self, placeholder: "Напишите о себе что-нибудь интересное", tag: 3, view: nil)    
+    lazy var btnExit = viewManager.getBtn(action: exitBtnAction, text: "Заполнить")
     
     lazy var exitBtnAction = UIAction { _ in
         self.delegate?.setName(name: self.editName.text)
