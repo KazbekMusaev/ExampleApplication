@@ -8,19 +8,24 @@
 import UIKit
 
 class ViewManager {
-    func getImage(imageName: String, view: UIView) -> UIImageView {
+    func getImage(imageName: String, view: UIView, useRectangleSide: Bool) -> UIImageView {
         let image = UIImageView()
-        let rectangleSide = view.frame.width / 2 - 30
-        image.image = UIImage(named: imageName)
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.heightAnchor.constraint(equalToConstant: rectangleSide).isActive = true
-        image.widthAnchor.constraint(equalToConstant: rectangleSide).isActive = true
+        if useRectangleSide {
+            let rectangleSide = view.frame.width / 2 - 30
+            image.heightAnchor.constraint(equalToConstant: rectangleSide).isActive = true
+            image.widthAnchor.constraint(equalToConstant: rectangleSide).isActive = true
+        } else  {
+            image.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            image.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        }
+        image.image = UIImage(named: imageName)
         return image
     }
     func getTextField(delegate : UITextFieldDelegate, placeholder: String, tag : Int, view : UIView?) -> UITextField {
         let textField = UITextField()
         if let view = view {
-            let oneSize = view.frame.width / 2 - 30
+            let oneSize = view.frame.width / 2 - 20
             textField.widthAnchor.constraint(equalToConstant: oneSize).isActive = true
         }
          textField.delegate = delegate

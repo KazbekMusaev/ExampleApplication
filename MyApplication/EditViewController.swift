@@ -23,8 +23,7 @@ final class EditViewController: UIViewController {
         view.addSubview(aboutMe)
         view.addSubview(textFieldAboutMe)
         view.addSubview(btnExit)
-        
-        
+    
         
         NSLayoutConstraint.activate([
             titleFIO.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
@@ -34,7 +33,6 @@ final class EditViewController: UIViewController {
             editName.topAnchor.constraint(equalTo: titleFIO.bottomAnchor, constant: 20),
             
             editLastName.topAnchor.constraint(equalTo: titleFIO.bottomAnchor, constant: 20),
-            editLastName.leadingAnchor.constraint(equalTo: editName.trailingAnchor, constant: 5),
             editLastName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             
             aboutMe.topAnchor.constraint(equalTo: editName.bottomAnchor, constant: 20),
@@ -44,7 +42,7 @@ final class EditViewController: UIViewController {
             textFieldAboutMe.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             textFieldAboutMe.topAnchor.constraint(equalTo: aboutMe.bottomAnchor, constant: 20),
             
-            btnExit.bottomAnchor.constraint(equalTo : view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            btnExit.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             btnExit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             btnExit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
