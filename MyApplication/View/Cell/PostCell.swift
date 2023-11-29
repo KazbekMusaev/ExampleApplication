@@ -81,7 +81,7 @@ final class PostCell: UITableViewCell {
             let text : String = "Подробнее"//нужно добавить аттрибуты
             $0.setTitle(text, for: .normal)
             $0.setTitleColor(.white, for: .normal)
-            $0.backgroundColor = UIColor(red: 0, green: 255/156, blue: 255/90, alpha: 1)
+            $0.backgroundColor = UIColor(red: 0, green: 156/255, blue: 90/255, alpha: 1)
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 20
         }
@@ -110,7 +110,7 @@ final class PostCell: UITableViewCell {
         
         let ratio = (image.image?.size.height ?? 0) / (image.image?.size.width ?? 0)
         let imgHeight = (self.frame.width - 20) * ratio
-        
+        print(imgHeight)
         NSLayoutConstraint.activate([
             ourView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             ourView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
