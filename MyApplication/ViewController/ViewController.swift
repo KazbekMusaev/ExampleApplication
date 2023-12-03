@@ -103,6 +103,7 @@ final class ViewController: UIViewController {
         $0.frame = view.bounds
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
+        $0.contentInsetAdjustmentBehavior = .never
         $0.dataSource = self
         $0.delegate = self
         return $0
