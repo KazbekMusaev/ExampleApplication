@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "marek-piwnicki-WXx-J0J4Lzo-unsplash.jpg",
-      "idiom" : "universal"
+      "filename" : "aleksei-ivanov-5uzOzdjZOL0-unsplash.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
