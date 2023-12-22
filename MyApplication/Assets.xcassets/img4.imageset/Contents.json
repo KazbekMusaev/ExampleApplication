@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "saffu-ApLwn7OuuhI-unsplash.jpg",
-      "idiom" : "universal"
+      "filename" : "chalo-gallardo-_R6ineYN4eE-unsplash.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
